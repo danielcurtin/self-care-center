@@ -9,21 +9,28 @@
       <h1>✨ Self Care Center ✨</h1>
       <h2>Which type of message?</h2>
     </header>
-    <section class="option-box">
-      <div class="buttons">
-        <input type="radio" class="type-of-msg" id="affirmation"></button>
-        <label><em>affirmation</em></label>
-        <input type="radio" class="type-of-msg" id="mantra"></button>
-        <label><em>mantra</em></label>
-      </div>
-      <div class="submit">
-        <button class="submit-button" id="receive-msg">Receive Message</button>
-      </div>
-    </section>
-    <section class="msg-display-box">
-      <img class="meditation-icon" src="./assets/meditate.svg" alt="meditation icon">
-      <p class="chosen-message hidden"></p>
-    </section>
+    <main>
+      <section class="option-box">
+        <div class="choice-buttons">
+          <div>
+            <input name="choice" type="radio" id="affirmation"></input>
+            <label><em>affirmation</em></label>
+          </div>
+          <div>
+            <input name="choice" type="radio" id="mantra"></input>
+            <label><em>mantra</em></label>
+          </div>
+        </div>
+        <div class="submit">
+          <button class="submit-button" id="receive-msg">Receive Message</button>
+        </div>
+      </section>
+      <section class="msg-display-box">
+        <img class="meditation-icon" src="./assets/meditate.svg" alt="meditation icon">
+        <p class="displayed-message hidden"></p>
+      </section>
+    </main>
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="data.js"></script>
   </body>
 </html>
