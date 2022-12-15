@@ -20,13 +20,17 @@ var currentFavorited = false;
 var favoritedMsg;
 var unFavButton;
 
-//event listeners
+
+
+
 submitButton.addEventListener("click", outputRandom);
 favoriteButton.addEventListener("click", favoriteMessage);
 viewFavsButton.addEventListener("click", showSaved);
-homeButton.addEventListener("click", switchPages);
+homeButton.addEventListener("click", showHomeClean);
 
-//event handlers
+
+
+
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 };
@@ -45,6 +49,7 @@ function displayIcon() {
 
 function outputRandom() {
     disableFav();
+
     if (mantraButton.checked) {
         displayMessage();
         visibleMsg.innerText = mantras[getRandomIndex(mantras)];
@@ -56,11 +61,12 @@ function outputRandom() {
     } else {
         displayIcon();
     };
+
     for (var i = 0; i < favorites.length; i++) {
         if (visibleMsg.innerText === favorites[i]) {
             enableFav();
-        }
-    }
+        };
+    };
 };
 
 function enableFav() {
@@ -71,14 +77,14 @@ function enableFav() {
 function disableFav() {
     currentFavorited = false;
     favButtonImg.src = "./assets/heart-outline.png";
-}
+};
 
 function favoriteMessage() {
     var currentMsg = visibleMsg.innerText;
+
     if (!currentFavorited) {
         for (var i = 0; i < favorites.length; i++) {
             if (currentMsg === favorites[i]) {
-
                 return;
             };
         };
@@ -90,8 +96,19 @@ function favoriteMessage() {
                 favorites.splice(i, 1);
             };
         };
+
         disableFav();
     };
+};
+
+function showHomeClean() {
+    if (meditateIcon.classList.contains("hidden")) {
+        visibleMsg.classList.toggle("hidden");
+        meditateIcon.classList.toggle("hidden");
+        favoriteButton.classList.toggle("hidden");
+    };
+
+    switchPages();
 };
 
 function switchPages() {
@@ -127,7 +144,7 @@ function updateSavedElements() {
         
         newFavButton.addEventListener("click", deleteMessage);
     };
-}
+};
 
 function showSaved() {
     switchPages();
@@ -136,6 +153,7 @@ function showSaved() {
 
 function deleteMessage(e) {
     var clicked = e.currentTarget.parentElement;
+
     for (var i = 0; i < favorites.length; i++) {
         if (clicked.innerText === favorites[i]) {
             favorites.splice(i, 1);
