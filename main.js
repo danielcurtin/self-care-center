@@ -17,13 +17,14 @@ var visibleMsg = document.querySelector(".displayed-message");
 var favorites = [];
 var currentFavorited = false;
 
+var favoritedMsg;
+var unFavButton;
 
 //event listeners
 submitButton.addEventListener("click", outputRandom);
 favoriteButton.addEventListener("click", favoriteMessage);
 viewFavsButton.addEventListener("click", showSaved);
 homeButton.addEventListener("click", switchPages);
-
 
 //event handlers
 function getRandomIndex(array) {
@@ -55,6 +56,11 @@ function outputRandom() {
     } else {
         displayIcon();
     };
+    for (var i = 0; i < favorites.length; i++) {
+        if (visibleMsg.innerText === favorites[i]) {
+            enableFav();
+        }
+    }
 };
 
 function enableFav() {
@@ -70,6 +76,12 @@ function disableFav() {
 function favoriteMessage() {
     var currentMsg = visibleMsg.innerText;
     if (!currentFavorited) {
+        for (var i = 0; i < favorites.length; i++) {
+            if (currentMsg === favorites[i]) {
+
+                return;
+            };
+        };
         enableFav();
         favorites.push(currentMsg);
     } else {
@@ -92,25 +104,43 @@ function switchPages() {
     favDisplayBox.classList.toggle("hidden");
 };
 
-function showSaved() {
-    switchPages();
+function updateSavedElements() {
+    favDisplayBox.innerHTML = "";
 
     for (var i = 0; i < favorites.length; i++) {
         var createBox = document.createElement("div");
         var newFavButton = document.createElement("button");
         var newFavImg = document.createElement("img");
+        
 
         createBox.setAttribute("class", "faved-msg-box");
+        createBox.setAttribute("id", `f${i}`);
         createBox.innerText = favorites[i];
         favDisplayBox.appendChild(createBox);
 
-        newFavButton.setAttribute("class", "favorite");
+        newFavButton.setAttribute("class", "already-faved");
         createBox.appendChild(newFavButton);
 
         newFavImg.setAttribute("src", "./assets/red-heart.png");
         newFavImg.setAttribute("style", "height: 30px; width: 30px;");
-        // newFavImg.src = "./assets/red-heart.png";
-        // newFavImg.style = "height: 30px; width: 30px;"
         newFavButton.appendChild(newFavImg);
+        
+        newFavButton.addEventListener("click", deleteMessage);
+    };
+}
+
+function showSaved() {
+    switchPages();
+    updateSavedElements();
+};
+
+function deleteMessage(e) {
+    var clicked = e.currentTarget.parentElement;
+    for (var i = 0; i < favorites.length; i++) {
+        if (clicked.innerText === favorites[i]) {
+            favorites.splice(i, 1);
+            updateSavedElements();
+            return;
+        };
     };
 };

@@ -70,7 +70,8 @@ nav {
   border-radius: 5px;
 }
 
-.favorite {
+.favorite,
+.already-faved {
   height: 30px;
   width: 30px;
   border: none;
