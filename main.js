@@ -2,11 +2,15 @@ var affirmButton = document.querySelector("#affirmation");
 var mantraButton = document.querySelector("#mantra");
 var submitButton = document.querySelector("#receive-msg");
 var favoriteButton = document.querySelector(".favorite");
+var favButtonImg = document.querySelector("#fav-button");
 var meditateIcon = document.querySelector(".meditation-icon");
 var displayedMessage = document.querySelector(".displayed-message");
 
+var favorites = [];
+
 //event listeners
 submitButton.addEventListener("click", outputRandom);
+favoriteButton.addEventListener("click", favoriteMessage);
 
 //functions
 function getRandomIndex(array) {
@@ -38,4 +42,8 @@ function outputRandom() {
         displayIcon();
         return;
     };
+};
+
+function favoriteMessage() {
+    favButtonImg.src = "./assets/red-heart.png";
 };
