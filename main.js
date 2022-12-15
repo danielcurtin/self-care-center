@@ -23,7 +23,7 @@ var unFavButton;
 
 
 
-submitButton.addEventListener("click", outputRandom);
+submitButton.addEventListener("click", outputRandomMsg);
 favoriteButton.addEventListener("click", favoriteMessage);
 viewFavsButton.addEventListener("click", showSaved);
 homeButton.addEventListener("click", showHomeClean);
@@ -42,12 +42,12 @@ function displayMessage() {
 };
 
 function displayIcon() {
-    meditateIcon.classList.remove("hidden");
     visibleMsg.classList.add("hidden");
     favoriteButton.classList.add("hidden");
+    meditateIcon.classList.remove("hidden");
 };
 
-function outputRandom() {
+function outputRandomMsg() {
     disableFav();
 
     if (mantraButton.checked) {
@@ -113,12 +113,12 @@ function showHomeClean() {
 
 function switchPages() {
     favDisplayBox.innerHTML = "";
-    viewFavsButton.classList.toggle("hidden");
-    homeButton.classList.toggle("hidden");
     headers.classList.toggle("hidden");
     optionBox.classList.toggle("hidden");
+    homeButton.classList.toggle("hidden");
     msgDisplayBox.classList.toggle("hidden");
     favDisplayBox.classList.toggle("hidden");
+    viewFavsButton.classList.toggle("hidden");
 };
 
 function updateSavedElements() {
@@ -142,7 +142,7 @@ function updateSavedElements() {
         newFavImg.setAttribute("style", "height: 30px; width: 30px;");
         newFavButton.appendChild(newFavImg);
         
-        newFavButton.addEventListener("click", deleteMessage);
+        newFavButton.addEventListener("click", deleteFav);
     };
 };
 
@@ -151,7 +151,7 @@ function showSaved() {
     updateSavedElements();
 };
 
-function deleteMessage(e) {
+function deleteFav(e) {
     var clicked = e.currentTarget.parentElement;
 
     for (var i = 0; i < favorites.length; i++) {
