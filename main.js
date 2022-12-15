@@ -1,6 +1,7 @@
 var affirmButton = document.querySelector("#affirmation");
 var mantraButton = document.querySelector("#mantra");
 var submitButton = document.querySelector("#receive-msg");
+var favoriteButton = document.querySelector(".favorite");
 var meditateIcon = document.querySelector(".meditation-icon");
 var displayedMessage = document.querySelector(".displayed-message");
 
@@ -15,11 +16,13 @@ function getRandomIndex(array) {
 function displayMessage() {
     meditateIcon.classList.add("hidden");
     displayedMessage.classList.remove("hidden");
+    favoriteButton.classList.remove("hidden");
 };
 
 function displayIcon() {
     meditateIcon.classList.remove("hidden");
     displayedMessage.classList.add("hidden");
+    favoriteButton.classList.add("hidden");
 };
 
 function outputRandom() {
