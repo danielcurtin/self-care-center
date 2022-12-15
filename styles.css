@@ -105,8 +105,8 @@ nav {
 
 .faved-msg-box {
   display: flex;
-  flex-flow: column;
-  justify-content: center;
+  flex-flow: row;
+  justify-content: space-between;
   align-items: center;
   height: 10vh;
   width: 30vw;
@@ -115,6 +115,8 @@ nav {
   box-shadow: 0px 8px 5px black;
   background-color: #ffffff;
   border-radius: 10px;
+  padding: 0px 5px 0px 20px;
+  text-align: left;
 }
 
 

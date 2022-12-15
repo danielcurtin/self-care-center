@@ -97,8 +97,20 @@ function showSaved() {
 
     for (var i = 0; i < favorites.length; i++) {
         var createBox = document.createElement("div");
+        var newFavButton = document.createElement("button");
+        var newFavImg = document.createElement("img");
+
         createBox.setAttribute("class", "faved-msg-box");
         createBox.innerText = favorites[i];
         favDisplayBox.appendChild(createBox);
+
+        newFavButton.setAttribute("class", "favorite");
+        createBox.appendChild(newFavButton);
+
+        newFavImg.setAttribute("src", "./assets/red-heart.png");
+        newFavImg.setAttribute("style", "height: 30px; width: 30px;");
+        // newFavImg.src = "./assets/red-heart.png";
+        // newFavImg.style = "height: 30px; width: 30px;"
+        newFavButton.appendChild(newFavImg);
     };
 };
